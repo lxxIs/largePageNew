@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /*border: 1px solid red;*/
+        }
+        #largeFullPage {
+            width: 100%;
+            min-width: 1360px;
+            height: 100vh;
+            /*background: url('~@/assets/img/fullBg.png') no-repeat;*/
+            /*background-size: 100% 100%;*/
+            /*-moz-background-size: 100% 100%;*/
+            /*padding: 0.625rem;*/
+            border: 1px solid red;
+            box-sizing: border-box;
+            /*margin-top: -3.5714285714285716rem;*/
+        }
+        #largeFullPage .fullBox{
+            width: 100%;
+            height: 100%;
+            /*background: url('~@/assets/img/fullBorder.png') no-repeat;*/
+            /*background-size: 100% 100%;*/
+            /*-moz-background-size: 100% 100%;*/
+        }
+        #largeFullPage .hearder-top {
+            height: 2.857142857142857rem;
+            width: 100%;
+            text-align: center;
+            font-size: 2.0rem;
+            /*color: #fff;*/
+            letter-spacing: 1.25rem;
+        }
+        #largeFullPage  .container{
+            width: 100%;
+            height: calc(100% - 2.857142857142857rem);
+            display: flex;
+            display: -webkit-flex;
+            -webkit-flex-direction:row;
+            flex-direction: row;
+            align-items: center;
+            -webkit-align-items: center;
+            justify-content: space-between;
+            -webkit-justify-content: space-between;
+        }
+        #largeFullPage .asideCell {
+            width: 30%;
+            height: 100%;
+            /*padding: 0.35714285714285715rem 0;*/
+            /*color: #fff;*/
+            overflow: hidden;
+            box-sizing: border-box;
+            border: 1px solid green;
+            /*display: flex;*/
+            /*display: -webkit-flex;*/
+            /*-webkit-flex-direction:column;*/
+            /*flex-direction: column;*/
+            /*align-items: center;*/
+            /*-webkit-align-items: center;*/
+        }
+        #largeFullPage .left-top{
+            width: 100%;
+            height: 50%;
+            border: 1px solid greenyellow;
+            box-sizing: border-box;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        #largeFullPage .left-bom{
+            width: 100%;
+            height: 50%;
+            border: 1px solid greenyellow;
+            box-sizing: border-box;
+            padding: 0.5rem 0;
+        }
+
+        #largeFullPage .midCell {
+            padding: 0.35714285714285715rem 0;
+            color: #fff;
+            text-align: center;
+            overflow: hidden;
+            width: 37.5%;
+            height: 100%;
+            /*margin-left: 0 .8rem;*/
+            box-sizing: border-box;
+            border: 1px solid green;
+        }
+        /*table大屏*/
+        .tablebox {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            background-color: rgba(6,26,103,1);
+        }
+        .tbl-header {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+        .tbl-body {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .tablebox table {
+            width: 100%;
+        }
+        .tablebox table th,
+        .tablebox table td {
+            font-size: 14px;
+            color: #7ca6f4;
+            line-height: 24px;
+            padding: 5px 0;
+            text-align: center;
+        }
+        .tablebox table tr th {
+            background-color: #1f1f9c;
+            cursor: pointer;
+        }
+        .tablebox table tr td {
+            background-color: transparent;
+        }
+        .tbl-body tr:nth-child(even) td,.tbl-body1 tr:nth-child(even) td {
+            background-color: rgba(31, 31, 156, .5);
+        }
+        .tablebox table tr td span,
+        .tablebox table tr td span {
+            font-size: 14px;
+        }
+        /*柱形图*/
+        .columnCell{
+            width: 100%;
+            height: 100%;
+        }
+        /*地图*/
+        #mapContainer{
+            width: 100%;
+            height: 100%;
+        }
+        /*折线图*/
+        #categoryCell{
+            width: 100%;
+            height: 100%;
+        }
+        #pieCell{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap" id="largeFullPage">
+    <div class="fullBox">
+        <div class="hearder-top">大屏展示页面</div>
+        <div class="container">
+            <div class="asideCell leftCell">
+                <div class="left-top">
+                    <div class="tablebox">
+                        <div class="tbl-header">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <thead>
+                                <tr>
+                                    <th>排名</th>
+                                    <th>地市</th>
+                                    <th>销售收入(万元)</th>
+                                    <th>同比(%)</th>
+                                    <th>环比(%)</th>
+                                    <th>销售计划(万元)</th>
+                                    <th>计划完成率(%)</th>
+                                </tr>
+                                </thead>
+                                <tbody style="opacity:0;"></tbody>
+                            </table>
+                        </div>
+                        <div class="tbl-body">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <thead>
+                                <tr>
+                                    <th>排名</th>
+                                    <th>地市</th>
+                                    <th>销售</th>
+                                    <th>同比(%)</th>
+                                    <th>环比(%)</th>
+                                    <th>销售计划(万元)</th>
+                                    <th>计划完成率(%)</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="left-bom">
+                    <div class="columnCell" id="columnCell"></div>
+                </div>
+            </div>
+            <div class="midCell">
+                <div class="mapWrap" id="mapContainer"></div>
+            </div>
+            <div class="asideCell rightCell">
+                <div class="left-top">
+                    <div class="pieCell" id="pieCell"></div>
+                </div>
+                <div class="left-bom">
+                    <div class="categoryCell" id="categoryCell"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/index.js"></script>
+<script src="https://webapi.amap.com/maps?v=1.4.14&key=fa811e19b57207e51d81f45a90d013c2"></script>
+</html>

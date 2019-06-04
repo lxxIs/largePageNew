@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{width: 500px;border: 1px solid gray;border-collapse: collapse;}
+        th,td{line-height: 35px;border: 1px solid gray;text-align: center;width: 120px;}
+        .scroll-box{height: 280px;width: 500px;overflow: hidden;position: relative;}
+        .tab-scroll{position: absolute;left: 0;top: 0;border-top: none;}
+        .tab-scroll td{border-top: none;}
+    </style>
+</head>
+<body>
+<table class="top">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>住址</th>
+    </tr>
+    </thead>
+</table>
+<div class="scroll-box">
+    <table class="tab-scroll">
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>李四</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>王五</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>王五</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>Jack</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1005</td>
+            <td>小兰</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1006</td>
+            <td>王五</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1007</td>
+            <td>王五</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1008</td>
+            <td>Jack</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        <tr>
+            <td>1009</td>
+            <td>小兰</td>
+            <td>AAAA</td>
+            <td>AAAA</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script>
+    var sTab=document.getElementsByClassName('tab-scroll')[0];//要滚动的表
+    var tbody=sTab.getElementsByTagName('tbody')[0];//要滚动表格的内容
+    sTab.appendChild(tbody.cloneNode(true));//追加一次滚动内容,以防滚动后可视区域无内容
+    var speed=sTab.getElementsByTagName('td')[0].offsetHeight+1;//每次滚动的距离
+    var tbdh=tbody.offsetHeight-1;//整个表的高度,-1是因为上边的边不算滚动
+    function scrollTop() {
+        var t=sTab.offsetTop;//获取要滚动表的位置
+        sTab.style.transition= '1s';//把过渡动画设为一秒
+        sTab.style.top=t-speed+'px';//改变表的top值
+        if (-tbdh==t) {//比较    如果第二个(追加上的)表的位置已经到了第一个表的位置(追加的表top为0)即第一个表完全不见
+            sTab.style.transition= '0s';//过渡动画设为0秒
+            sTab.style.top='0px';//位置设为初始位置
+            scrollTop();//因为偷梁换柱消耗了一次过程,所以把这一次过程补回来
+        }
+    }
+    setInterval(scrollTop,2000);
+</script>
+</html>
